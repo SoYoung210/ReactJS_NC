@@ -1,7 +1,15 @@
 import React, { Component } from 'react';
+import PropTypes from "prop-types";
 import './Movie.css';
 
 class Movie extends Component {
+	/* 타이틀, 포스터가 string 타입이라는 것을 명시. */
+	/* React deprecated prop-types since 15.5.0. */
+	static propTypes = {
+		//title이 필수라는 점을 명시.
+		title: PropTypes.string.isRequired,
+		poster: PropTypes.string
+	}
 	render() {
 		console.log(this.props);
 		return ( 
@@ -15,6 +23,10 @@ class Movie extends Component {
 }
 
 class MoviePoster extends Component {
+	//movie poster가 필수임을 명시하고 있음. 
+	static propTypes = {
+		poster : PropTypes.string.isRequired
+	}
 	render() {
 		console.log(this.props);
 		return (
