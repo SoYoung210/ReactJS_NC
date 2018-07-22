@@ -18,3 +18,13 @@ NomadCoders에서 배우는 ReactJS 학습창이다.
 ### React vs ReactDOM?
 `react` 는 ui라이브러리. `react dom`은 리액트를 출력하는 것. 
 
+### big issue
+```javascript
+componentWillMount()
+componentWillReceiveProps()
+componentWillUpdate()
+```
+
+위 3개의 `LifeCycle method` 들은 React17 에서 **사용권장하지 않음** 상태.(update 필요.)  
+`UNSAFE_ prefix` 로 남는다고... 
+
