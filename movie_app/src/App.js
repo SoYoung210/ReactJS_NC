@@ -38,7 +38,13 @@ class App extends Component {
           }
         ]
       })
-    }, 1000);
+    }, 5000);
+  }
+  _renderMovies = () => {
+    const movies = this.state.movies.map((movie, index) => {
+      return <Movie title={movie.title} poster={movie.poster} key={index}/>
+    })   
+    return movies;
   }
   _renderMovies = () => {
     const movies = this.state.movies.map((movie, index) => {
@@ -53,6 +59,7 @@ class App extends Component {
         {/* movies는 array이다. map! 기능은 새로운 array 만드는 것. */}
         {/* movies라는 array를 가져다가, current element is movie */}
         {/* 리액트는 element가 많을 경우 key라는 것을 줘야 한다. */}
+
         {this.state.movies ? this._renderMovies() : 'Loading'}
     </div>
     );
