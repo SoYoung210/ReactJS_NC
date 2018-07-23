@@ -23,29 +23,52 @@ class Movie extends Component {
 	}
 }*/
 
-function Movie({title, poster}) {
+function Movie({title, poster, genres, synopsis}) {
 	return ( 
-		<div>
-			<MoviePoster poster={poster}/>
+		<div className = "Movie">
+			<div className = "Movie__Columns">
+				<MoviePoster poster={poster} alt={title}/>
+			</div>
+			<div className = "Movie__Columns">
+				<h1>{title}</h1>
+				<div className = "Movie__Genres">
+					{genres.map((genre,index) => 
+							<MovieGenre genre = {genre}
+										key = {index} />
+					)}
+				</div>
+				<p className= "Movie__Synopsis">
+					{synopsis}
+				</p>
+			</div>
 			{/* JSX 는 명령을 수행하려면 괄호를 쳐야해. */}
-			<h1>{title}</h1>
+			
 		</div>
 	)
 }
 Movie.propTypes = {
 	title : PropTypes.string.isRequired,
-	poster : PropTypes.string.isRequired
+	poster : PropTypes.string.isRequired,
+	genres : PropTypes.array.isRequired,
+	synopsis : PropTypes.string.isRequired
 }
-
-function MoviePoster({poster}){
-	//오직 poster만 필요하고 바로 return만 하는 것. 굳이 class로 만들 이유가 없다.
+function MovieGenre({genre}) {
 	return (
-		<img src = {poster} alt = "movie poster"/>
+		<span className ="Movie__Genre"> </span>
 	)
 }
-
+function MoviePoster({poster, title}){
+	//오직 poster만 필요하고 바로 return만 하는 것. 굳이 class로 만들 이유가 없다.
+	return (
+		<img src = {poster} alt = {title} className="Movie__Poster"/>
+	)
+}
+MovieGenre.propTypes = {
+	genre : PropTypes.string.isRequired
+}
 MoviePoster.propTypes = {
-	poster : PropTypes.string.isRequired
+	poster : PropTypes.string.isRequired,
+	title : PropTypes.string.isRequired
 }
 /*
 class MoviePoster extends Component {
