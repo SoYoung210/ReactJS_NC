@@ -40,7 +40,7 @@ Movie.propTypes = {
 function MoviePoster({poster}){
 	//오직 poster만 필요하고 바로 return만 하는 것. 굳이 class로 만들 이유가 없다.
 	return (
-		<img src = {poster} />
+		<img src = {poster} alt = "movie poster"/>
 	)
 }
 
