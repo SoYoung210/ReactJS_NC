@@ -44,7 +44,7 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
+      <div className={this.state.movies ? "App" : "App--loading"}>
         { /* 각 movie에 title이라는 이름으로 props 전달.  */ }
         {/* movies는 array이다. map! 기능은 새로운 array 만드는 것. */}
         {/* movies라는 array를 가져다가, current element is movie */}

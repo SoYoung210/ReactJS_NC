@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from "prop-types";
 import './Movie.css';
-
+import LinesEllipsis from 'react-lines-ellipsis'
 /*
 class Movie extends Component {
 	// 타이틀, 포스터가 string 타입이라는 것을 명시. 
@@ -37,9 +37,15 @@ function Movie({title, poster, genres, synopsis}) {
 										key = {index} />
 					)}
 				</div>
-				<p className= "Movie__Synopsis">
-					{synopsis}
-				</p>
+				<div className= "Movie__Synopsis">
+					<LinesEllipsis
+						text={synopsis}
+						maxLine='3'
+						ellipsis='...'
+						trimRight
+						basedOn='letters'
+						/> 
+				</div>
 			</div>
 			{/* JSX 는 명령을 수행하려면 괄호를 쳐야해. */}
 			
@@ -47,10 +53,10 @@ function Movie({title, poster, genres, synopsis}) {
 	)
 }
 Movie.propTypes = {
-	title : PropTypes.string.isRequired,
-	poster : PropTypes.string.isRequired,
-	genres : PropTypes.array.isRequired,
-	synopsis : PropTypes.string.isRequired
+    title: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired,
+    genres: PropTypes.array.isRequired,
+    synopsis: PropTypes.string.isRequired
 }
 function MovieGenre({genre}) {
 	return (
@@ -68,7 +74,7 @@ MovieGenre.propTypes = {
 }
 MoviePoster.propTypes = {
 	poster : PropTypes.string.isRequired,
-	title : PropTypes.string.isRequired
+	alt : PropTypes.string.isRequired
 }
 /*
 class MoviePoster extends Component {
