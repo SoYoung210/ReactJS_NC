@@ -26,10 +26,10 @@ class Movie extends Component {
 function Movie({title, poster, genres, synopsis}) {
 	return ( 
 		<div className = "Movie">
-			<div className = "Movie__Columns">
+			<div className = "Movie__Column">
 				<MoviePoster poster={poster} alt={title}/>
 			</div>
-			<div className = "Movie__Columns">
+			<div className = "Movie__Column">
 				<h1>{title}</h1>
 				<div className = "Movie__Genres">
 					{genres.map((genre,index) => 
