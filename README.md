@@ -28,3 +28,5 @@ componentWillUpdate()
 위 3개의 `LifeCycle method` 들은 React17 에서 **사용권장하지 않음** 상태.(update 필요.)  
 `UNSAFE_ prefix` 로 남는다고... 
 
+### React16 은 정말 멋지다. (강조 매우강조)
+[Return Type과 Portals 간단 정리 ](https://github.com/SoYoung210/ReactJS_NC/issues/16)
