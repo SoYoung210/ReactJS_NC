@@ -3,6 +3,23 @@ import { createPortal } from 'react-dom'
 import logo from './logo.svg';
 import './App.css';
 
+class ErrorMaker extends Component {
+  state = {
+    friends : ["hjk", "jsy", "money"]
+  }
+  componentDidMount = () => {
+    setTimeout(()=>{
+      this.setState({
+        friends : undefined
+      });
+    },2000);
+  }
+  render() {
+    const { friends } = this.state;
+    return friends.map(friend => ` ${friend}`)
+  }
+}
+
 class Portals extends Component {
   render() {
     return createPortal (
@@ -40,6 +57,7 @@ class App extends Component {
         <Fragment>
           <ReturnTypes />
           <Portals />
+          <ErrorMaker />
         </Fragment>
       </div>
     );
