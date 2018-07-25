@@ -50,14 +50,24 @@ class ReturnTypes extends Component {
   }
 }
 */
+const ErrorCallback = () => "Something is wrong";
 class App extends Component {
+  state = {
+    hasError : false
+  };
+  componentDidCatch = (error, info) => {
+    console.log(`catched ${error} the info is i have is ${JSON.stringify(info)}`);
+    this.setState({
+      hasError : true
+    });
+  };
   render() {
     return (
       <div className="App">
         <Fragment>
           <ReturnTypes />
           <Portals />
-          <ErrorMaker />
+          {hasError ? <ErrorCallback/> : <ErrorMaker/>}
         </Fragment>
       </div>
     );
