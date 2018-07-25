@@ -2,6 +2,37 @@ import React, { Component , Fragment } from 'react';
 import { createPortal } from 'react-dom'
 import logo from './logo.svg';
 import './App.css';
+//setState null 스테이트를 업데이트하지도, 컴포넌트를 업데이트 하지도 않음. 
+
+const MAX_PIZZA = 20;
+
+const eatPizza = (state, props) => {
+  const { pizza } = state;
+  if(pizza < MAX_PIZZA) {
+    return {
+      pizza : pizza +1
+    };
+  }else {
+    return null;
+  }
+};
+
+class Controlled extends Component {
+  state = {
+    pizza : 0
+  };
+  render() {
+    const {pizza} = this.state;
+    return (
+      <button onClick = {this._handleClick}>
+        {`I have eaten ${pizza} ${pizza ===1 ? "pizza" : "pizzas"}`}
+      </button>
+    );
+  }
+  _handleClick = () => {
+    this.setState(eatPizza);
+  }
+}
 
 const BoundaryHC = ProtectedComponent => class Boundar extends Component {
   state = {
@@ -78,9 +109,10 @@ class App extends Component {
     return (
       <div className="App">
         <Fragment>
+          <Controlled/>
           <ReturnTypes />
           <Portals />
-          <ErrorMaker/>
+        
         </Fragment>
       </div>
     );
