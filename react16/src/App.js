@@ -3,6 +3,44 @@ import { createPortal } from 'react-dom'
 import logo from './logo.svg';
 import './App.css';
 
+const BoundaryHC = ProtectedComponent => class Boundar extends Component {
+  state = {
+    hasError : false
+  };
+  componentDidCatch = () => {
+    this.setState({
+      hasError: true
+    })
+  };
+  render() {
+    const { hasError } = this.state;
+    if(hasError) {
+      return <ErrorCallback />
+    }else {
+      return <ProtectedComponent />
+    }
+  }
+}
+
+class ErrorMaker extends Component {
+  state = {
+    friends : ["hjk", "jsy", "money"]
+  }
+  componentDidMount = () => {
+    setTimeout(()=>{
+      this.setState({
+        friends : undefined
+      });
+    },2000);
+  }
+  render() {
+    const { friends } = this.state;
+    return friends.map(friend => ` ${friend}`)
+  }
+}
+
+const PErrorMaker = BoundaryHC(ErrorMaker);
+
 class Portals extends Component {
   render() {
     return createPortal (
@@ -10,6 +48,7 @@ class Portals extends Component {
     );
   }
 }
+const PPortals = BoundaryHC(Portals);
 
 const Message = () => "just touched it";
 
@@ -33,6 +72,7 @@ class ReturnTypes extends Component {
   }
 }
 */
+const ErrorCallback = () => "Something is wrong";
 class App extends Component {
   render() {
     return (
@@ -40,10 +80,12 @@ class App extends Component {
         <Fragment>
           <ReturnTypes />
           <Portals />
+          <ErrorMaker/>
         </Fragment>
       </div>
     );
   }
 }
+
 
 export default App;
