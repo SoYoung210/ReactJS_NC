@@ -30,3 +30,5 @@ componentWillUpdate()
 
 ### React16 은 정말 멋지다. (강조 매우강조)
 [Return Type과 Portals 간단 정리 ](https://github.com/SoYoung210/ReactJS_NC/issues/16)
+> 링크 클릭하기 귀찮은 분들이 보실수도 있어서 바로 적자면, `<Fragment>` 로 불필요한 `<div>` 태그 ~~남발~~ 을 줄일 수 있고, 
+  포탈은 리액트로 접근할 수 있는 영역을 확장해주었다. 
