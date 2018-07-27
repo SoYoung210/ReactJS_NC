@@ -16,11 +16,11 @@ class SearchBar extends Component{
 
     render() {
         return (
-            <Fragment>
+            <div className = "search-bar">
                 <input
                     value = {this.state.term} // 이러니까.
                     onChange={this.onInputChange} type="text"/>
-            </Fragment>
+            </div>
         );
     }
 
