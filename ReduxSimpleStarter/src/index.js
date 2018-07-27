@@ -14,10 +14,14 @@ const API_KEY = "AIzaSyDJHfBft96VhgqEQP6oCn2h5ayYS82OUro";
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = { videos : []};
+        this.state = { videos : [], selectedVideo : null};
         YTSearch({key: API_KEY, term: 'surfboards'}, videos => {
-           this.setState({videos}) //key 와 vlaue 이름이 같을 ㄸ. 
+           this.setState({
+               videos : videos,
+               selectedVideo : videos[0] // 첫번째 값으로 셋팅 
+           }) //key 와 vlaue 이름이 같을 ㄸ. 
            //this.setState({videos : videos })
+
         })       
     }
     //즉시 렌더링 되는 바람에 video[0]이렇게 접근하면 undef
@@ -25,8 +29,10 @@ class App extends Component {
         return (
             <Fragment>
                 <SearchBar />
-                <VideoDeatil video={this.state.videos[0]}/>>
-                <VideoList videos={this.state.videos} /> 
+                <VideoDeatil video={this.state.selectedVideo}/>>
+                <VideoList 
+                    onVideoSelect = {selectedVideo => this.setState({selectedVideo})}
+                    videos={this.state.videos} /> 
             </Fragment>
         );
     }
