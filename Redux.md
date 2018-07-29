@@ -1,5 +1,7 @@
 ## 리덕스(Redux)란 무엇인가?
 
+[Redux repo 분리](https://github.com/SoYoung210/Redux)
+
 ### 핵심
 리덕스는 어플리케이션의 clinet쪽 `state` 를 관리하기 위한 거대한 event-loop 이다. 
 > React의 state 에 대한 개념이 필요하다. (아래는 sample jsx code)
